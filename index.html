@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WE ARE, WHAT WE EAT</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="background-glow glow-1"></div>
+    <div class="background-glow glow-2"></div>
+
+    <!-- APP -->
+    <div class="app">
+
+        <!-- ================= HEADER ================= -->
+        <header class="topbar">
+
+            <div class="brand" onclick="showScreen('homeScreen')">
+                <div class="brand-icon">🍎</div>
+
+                <div>
+                    <h1>WE ARE, WHAT WE EAT</h1>
+                    <p>Explore food. Understand food. Understand yourself.</p>
+                </div>
+            </div>
+
+            <button class="home-btn" onclick="showScreen('homeScreen')">
+                Home
+            </button>
+
+        </header>
+
+
+        <!-- ================= HOME ================= -->
+        <main id="homeScreen" class="screen active">
+
+            <section class="hero">
+
+                <div class="hero-content">
+
+                    <span class="badge">
+                        🌱 INTERDISCIPLINARY FOOD EXPLORER
+                    </span>
+
+                    <h2>
+                        Discover the
+                        <span>Story Behind Your Food</span>
+                    </h2>
+
+                    <p>
+                        Search any food, fruit, vegetable, grain, ingredient
+                        or dish and explore its nutrition, history, origin,
+                        production and more.
+                    </p>
+
+                    <button class="primary-btn" onclick="focusSearch()">
+                        🔎 Explore Food
+                    </button>
+
+                </div>
+
+                <div class="hero-visual">
+                    <div class="food-orbit">
+                        <div class="orbit orbit-1"></div>
+                        <div class="orbit orbit-2"></div>
+                        <div class="food-center">🥗</div>
+
+                        <span class="float-food f1">🍎</span>
+                        <span class="float-food f2">🥭</span>
+                        <span class="float-food f3">🥕</span>
+                        <span class="float-food f4">🍌</span>
+                        <span class="float-food f5">🥛</span>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- FEATURE CARDS -->
+            <section class="feature-grid">
+
+                <div class="feature-card" onclick="focusSearch()">
+                    <div class="feature-icon">🔎</div>
+                    <h3>Smart Food Search</h3>
+                    <p>
+                        Search naturally. The AI understands spelling,
+                        names and food-related queries.
+                    </p>
+                </div>
+
+                <div class="feature-card" onclick="showScreen('compareScreen')">
+                    <div class="feature-icon">⚖️</div>
+                    <h3>Compare Foods</h3>
+                    <p>
+                        Compare two foods and understand their
+                        nutritional differences.
+                    </p>
+                </div>
+
+                <div class="feature-card" onclick="showScreen('eatScreen')">
+                    <div class="feature-icon">🍽️</div>
+                    <h3>Aaj Aapne Kya Khaya?</h3>
+                    <p>
+                        Enter food and quantity to estimate calories.
+                    </p>
+                </div>
+
+                <div class="feature-card" onclick="startQuiz()">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Food Quiz</h3>
+                    <p>
+                        Test what you learned about food and nutrition.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <!-- PROJECT IDEA -->
+            <section class="info-panel">
+
+                <div>
+                    <span class="small-label">OUR IDEA</span>
+
+                    <h2>
+                        Food is more than just something we eat.
+                    </h2>
+
+                    <p>
+                        Every food has a story — where it comes from,
+                        how it grows or is made, what it contains and
+                        how it becomes part of our daily life.
+                    </p>
+                </div>
+
+                <div class="idea-points">
+
+                    <div>
+                        <b>01</b>
+                        <span>Discover</span>
+                    </div>
+
+                    <div>
+                        <b>02</b>
+                        <span>Understand</span>
+                    </div>
+
+                    <div>
+                        <b>03</b>
+                        <span>Compare</span>
+                    </div>
+
+                    <div>
+                        <b>04</b>
+                        <span>Learn</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- ================= SEARCH ================= -->
+        <main id="searchScreen" class="screen">
+
+            <section class="page-heading">
+
+                <span class="badge">
+                    🔬 FOOD KNOWLEDGE LAB
+                </span>
+
+                <h2>What do you want to discover?</h2>
+
+                <p id="searchSubtitle">
+                    Search any food and explore its complete profile.
+                </p>
+
+            </section>
+
+
+            <section class="search-box">
+
+                <input
+                    id="foodSearch"
+                    type="text"
+                    placeholder="Try: mango, paneer, dragon fruit, dosa..."
+                    autocomplete="off"
+                >
+
+                <button
+                    id="searchButton"
+                    onclick="searchFood()"
+                >
+                    🔎 Search
+                </button>
+
+            </section>
+
+
+            <!-- SEARCH STATUS -->
+            <div id="searchLoading" class="loading-box hidden">
+
+                <div class="loader"></div>
+
+                <div>
+                    <strong>Exploring food information...</strong>
+                    <p id="loadingText">
+                        Understanding your search and finding reliable information.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- SEARCH RESULT -->
+            <section id="searchResult"></section>
+
+        </main>
+
+
+        <!-- ================= COMPARE ================= -->
+        <main id="compareScreen" class="screen">
+
+            <section class="page-heading">
+
+                <span class="badge">⚖️ FOOD COMPARISON</span>
+
+                <h2>Compare Two Foods</h2>
+
+                <p>
+                    Enter any two foods to compare their available
+                    nutritional information.
+                </p>
+
+            </section>
+
+
+            <section class="compare-inputs">
+
+                <div class="input-card">
+                    <label>Food 1</label>
+
+                    <input
+                        id="compareFood1"
+                        type="text"
+                        placeholder="e.g. Apple"
+                    >
+                </div>
+
+
+                <div class="compare-vs">
+                    VS
+                </div>
+
+
+                <div class="input-card">
+                    <label>Food 2</label>
+
+                    <input
+                        id="compareFood2"
+                        type="text"
+                        placeholder="e.g. Banana"
+                    >
+                </div>
+
+            </section>
+
+
+            <button
+                class="primary-btn center-btn"
+                onclick="compareFoods()"
+            >
+                ⚡ Compare Foods
+            </button>
+
+
+            <div id="compareLoading" class="loading-box hidden">
+                <div class="loader"></div>
+                <div>
+                    <strong>Comparing...</strong>
+                    <p>Please wait.</p>
+                </div>
+            </div>
+
+
+            <section id="compareResult"></section>
+
+        </main>
+
+
+        <!-- ================= EAT ================= -->
+        <main id="eatScreen" class="screen">
+
+            <section class="page-heading">
+
+                <span class="badge">🍽️ FOOD CALCULATOR</span>
+
+                <h2>Aaj Aapne Kya Khaya?</h2>
+
+                <p>
+                    Enter a food and the approximate quantity you ate.
+                </p>
+
+            </section>
+
+
+            <section class="calorie-card">
+
+                <div class="calorie-input">
+
+                    <label>Food</label>
+
+                    <input
+                        id="eatFood"
+                        type="text"
+                        placeholder="e.g. Rice"
+                    >
+
+                </div>
+
+
+                <div class="calorie-input">
+
+                    <label>Quantity (grams)</label>
+
+                    <input
+                        id="eatQuantity"
+                        type="number"
+                        min="1"
+                        placeholder="e.g. 150"
+                    >
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="calculateCalories()"
+                >
+                    🧮 Calculate
+                </button>
+
+            </section>
+
+
+            <section id="calorieResult"></section>
+
+        </main>
+
+
+        <!-- ================= QUIZ ================= -->
+        <main id="quizScreen" class="screen">
+
+            <section class="page-heading">
+
+                <span class="badge">🧠 FOOD QUIZ</span>
+
+                <h2>How much did you learn?</h2>
+
+                <p>
+                    Answer the questions and test your food knowledge.
+                </p>
+
+            </section>
+
+
+            <section id="quizBox" class="quiz-card">
+
+                <div class="quiz-start">
+
+                    <div class="quiz-big-icon">🧠</div>
+
+                    <h3>Ready?</h3>
+
+                    <p>
+                        Let's test your knowledge about food,
+                        nutrition and our eating habits.
+                    </p>
+
+                    <button
+                        class="primary-btn"
+                        onclick="startQuiz()"
+                    >
+                        Start Quiz
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- ================= THANK YOU ================= -->
+        <main id="thankScreen" class="screen">
+
+            <section class="thank-you">
+
+                <div class="thank-icon">
+                    🌱
+                </div>
+
+                <h2>THANK YOU EVERYONE</h2>
+
+                <p>
+                    Food connects science, culture, health,
+                    agriculture and our everyday lives.
+                </p>
+
+                <button
+                    class="primary-btn"
+                    onclick="showScreen('homeScreen')"
+                >
+                    Back to Home
+                </button>
+
+            </section>
+
+        </main>
+
+
+        <!-- ================= BOTTOM NAV ================= -->
+        <nav class="bottom-nav">
+
+            <button id="navHome" onclick="showScreen('homeScreen')">
+                <span>⌂</span>
+                <small>Home</small>
+            </button>
+
+            <button id="navSearch" onclick="focusSearch()">
+                <span>⌕</span>
+                <small>Search</small>
+            </button>
+
+            <button id="navCompare" onclick="showScreen('compareScreen')">
+                <span>⚖</span>
+                <small>Compare</small>
+            </button>
+
+            <button id="navEat" onclick="showScreen('eatScreen')">
+                <span>🍽</span>
+                <small>Eat</small>
+            </button>
+
+            <button id="navQuiz" onclick="startQuiz()">
+                <span>?</span>
+                <small>Quiz</small>
+            </button>
+
+        </nav>
+
+
+        <!-- TOAST -->
+        <div id="toast" class="toast"></div>
+
+    </div>
+
+
+    <!-- IMPORTANT: JS MUST BE LAST -->
+    <script src="script.js"></script>
+
+</body>
+</html>
